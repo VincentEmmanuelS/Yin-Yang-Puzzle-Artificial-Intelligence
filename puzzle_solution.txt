@@ -1,0 +1,12 @@
+Solution:
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 1 0 1 
+0 0 0 0 0 
+0 0 0 0 1 
+
+
+Report:
+Seed: 312026639504174834
+Generations: 1000
+Final Fitness: -18
