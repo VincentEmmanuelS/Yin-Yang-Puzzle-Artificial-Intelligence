@@ -3,6 +3,7 @@ Source
 --
 Yin-Yang Puzzle: https://www.puzzle-yin-yang.com/
 Yin-Yang Puzzle Solver: https://www.noq.solutions/yinyang
+Yin-yang Documentation: https://docs.google.com/document/d/11VSGOSFXeKie6hPsAWADmxT6TLiJuIVggP1ll6621As/edit?usp=sharing
 
 --
 Yin-Yang Puzzle Solver: https://github.com/abtinfi/simple-Yin-Yang-Puzzle-Solver (C++)
