@@ -115,25 +115,6 @@ public class Chromosome {
      */
     private int calculateFitness() {
         int fitness = 0;
-        int size = solution.length;
-
-        // Memeriksa validitas baris (tidak boleh ada lebih dari 3 warna berturut-turut yang sama)
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 2; j++) {
-                if (solution[i][j] == solution[i][j + 1] && solution[i][j] == solution[i][j + 2]) {
-                    fitness -= 5; // Penalti jika melanggar aturan baris
-                }
-            }
-        }
-
-        // Memeriksa validitas kolom (tidak boleh ada lebih dari 3 warna berturut-turut yang sama)
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 2; j++) {
-                if (solution[j][i] == solution[j + 1][i] && solution[j][i] == solution[j + 2][i]) {
-                    fitness -= 5; // Penalti jika melanggar aturan kolom
-                }
-            }
-        }
 
         // Evaluasi keseimbangan baris dan kolom
         fitness += evaluateBalance();
