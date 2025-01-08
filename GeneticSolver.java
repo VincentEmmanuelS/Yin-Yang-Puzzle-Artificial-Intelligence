@@ -1,20 +1,24 @@
+/**
+ * @author Vincent Emmanuel Suwardy / 6182201067
+ */
+
 import java.util.*;
 
 /**
  * Genetic algorithm solver
  */
-public class GeneticSolver {
-        private final YinYangPuzzle puzzle;
-    
-        public GeneticSolver(YinYangPuzzle puzzle) {
-            this.puzzle = puzzle;
-        }
-    
-        public GeneticResult solve() {
-            List<Chromosome> population = initializePopulation();
-            int generation = 0;
-    
-            while (generation < GeneticAlgorithmYinYang.MAX_GENERATIONS) {
+class GeneticSolver {
+    private final YinYangPuzzle puzzle;
+
+    public GeneticSolver(YinYangPuzzle puzzle) {
+        this.puzzle = puzzle;
+    }
+
+    public GeneticResult solve() {
+        List<Chromosome> population = initializePopulation();
+        int generation = 0;
+
+        while (generation < GeneticAlgorithmYinYang.MAX_GENERATIONS) {
             population = evolve(population);
             Chromosome best = getBestChromosome(population);
 
@@ -49,7 +53,6 @@ public class GeneticSolver {
     }
 
     private Chromosome selectParent(List<Chromosome> population) {
-        // Tournament selection
         Chromosome best = null;
         for (int i = 0; i < 5; i++) {
             Chromosome candidate = population.get(GeneticAlgorithmYinYang.RANDOM.nextInt(GeneticAlgorithmYinYang.POPULATION_SIZE));

@@ -1,3 +1,7 @@
+/**
+ * @author Vincent Emmanuel Suwardy / 6182201067
+ */
+
 import java.io.*;
 import java.util.*;
 
@@ -7,7 +11,7 @@ import java.util.*;
 public class GeneticAlgorithmYinYang {
 
     // Seed for reproducibility
-    private static final long SEED = new Random().nextLong(); // Replace with desired seed value
+    private static final long SEED = new Random().nextLong(1000); // Replace with desired seed value
 
     // Random number generator with a fixed seed
     public static final Random RANDOM = new Random(SEED);

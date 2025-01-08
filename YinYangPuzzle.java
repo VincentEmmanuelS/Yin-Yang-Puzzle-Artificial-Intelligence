@@ -1,3 +1,7 @@
+/**
+ * @author Vincent Emmanuel Suwardy / 6182201067
+ */
+
 import java.io.*;
 import java.util.*;
 

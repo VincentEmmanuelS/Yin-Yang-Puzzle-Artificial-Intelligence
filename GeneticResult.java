@@ -1,4 +1,8 @@
 /**
+ * @author Vincent Emmanuel Suwardy / 6182201067
+ */
+
+/**
  * Container for the result of the genetic algorithm
  */
 public class GeneticResult {

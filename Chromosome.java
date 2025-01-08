@@ -1,3 +1,6 @@
+/**
+ * @author Vincent Emmanuel Suwardy / 6182201067
+ */
 import java.util.*;
 
 /**
@@ -48,21 +51,96 @@ public class Chromosome {
         }
     }
 
-    // private int calculateFitness() {
-    //     // Placeholder fitness function
-    //     return GeneticAlgorithmYinYang.RANDOM.nextInt(100); // TODO: Implement actual fitness evaluation
-    // }
-
+    // Tambahkan evaluasi konektivitas dan larangan grup 2x2 ke dalam fitness function
     private int calculateFitness() {
         int fitness = 0;
 
-        // Periksa keseimbangan pada baris dan kolom
+        // Evaluasi keseimbangan baris dan kolom (dari fungsi yang ada)
         fitness += evaluateBalance();
 
-        // Periksa bahwa tidak ada kelompok berturut-turut yang terlalu besar
+        // Evaluasi bahwa tidak ada kelompok berturut-turut yang terlalu besar
         fitness += evaluateGroupBalance();
 
+        // Tambahkan evaluasi konektivitas
+        fitness += evaluateConnectivity();
+
+        // Tambahkan penalti untuk subgrup 2x2 yang tidak valid
+        fitness += evaluate2x2Groups();
+
         return fitness;
+    }
+
+    // Mengevaluasi konektivitas antar grup putih dan hitam
+    private int evaluateConnectivity() {
+        int connectivityScore = 0;
+
+        boolean[][] visited = new boolean[solution.length][solution[0].length];
+
+        // Periksa konektivitas grup putih (0)
+        int whiteConnectedComponents = countConnectedComponents(0, visited);
+        if (whiteConnectedComponents == 1) {
+            connectivityScore += 10; // Bonus jika semua putih terhubung
+        } else {
+            connectivityScore -= whiteConnectedComponents*10; // Penalti untuk setiap grup terpisah
+        }
+
+        // Reset visited dan periksa konektivitas grup hitam (1)
+        visited = new boolean[solution.length][solution[0].length];
+        int blackConnectedComponents = countConnectedComponents(1, visited);
+        if (blackConnectedComponents == 1) {
+            connectivityScore += 10; // Bonus jika semua hitam terhubung
+        } else {
+            connectivityScore -= blackConnectedComponents; // Penalti untuk setiap grup terpisah
+        }
+
+        return connectivityScore;
+    }
+
+    // Hitung jumlah komponen terhubung untuk nilai tertentu (0 atau 1)
+    private int countConnectedComponents(int value, boolean[][] visited) {
+        int components = 0;
+        for (int i = 0; i < solution.length; i++) {
+            for (int j = 0; j < solution[i].length; j++) {
+                if (!visited[i][j] && solution[i][j] == value) {
+                    components++;
+                    dfs(i, j, value, visited);
+                }
+            }
+        }
+        return components;
+    }
+
+    // Depth-First Search untuk menandai komponen terhubung
+    private void dfs(int x, int y, int value, boolean[][] visited) {
+        if (x < 0 || x >= solution.length || y < 0 || y >= solution[0].length || visited[x][y] || solution[x][y] != value) {
+            return;
+        }
+
+        visited[x][y] = true;
+
+        // Periksa empat arah (atas, bawah, kiri, kanan)
+        dfs(x - 1, y, value, visited);
+        dfs(x + 1, y, value, visited);
+        dfs(x, y - 1, value, visited);
+        dfs(x, y + 1, value, visited);
+    }
+
+    // Evaluasi penalti untuk subgrup 2x2 yang tidak valid
+    private int evaluate2x2Groups() {
+        int penalty = 0;
+
+        for (int i = 0; i < solution.length - 1; i++) {
+            for (int j = 0; j < solution[i].length - 1; j++) {
+                // Cek jika subgrup 2x2 memiliki nilai yang sama
+                if (solution[i][j] == solution[i + 1][j] &&
+                    solution[i][j] == solution[i][j + 1] &&
+                    solution[i][j] == solution[i + 1][j + 1]) {
+                    penalty -= 5; // Penalti untuk subgrup 2x2 yang tidak valid
+                }
+            }
+        }
+
+        return penalty;
     }
 
     // Mengevaluasi keseimbangan antara 0 dan 1 pada setiap baris dan kolom
