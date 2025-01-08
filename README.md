@@ -32,4 +32,4 @@ Proyek ini merupakan implementasi dari algoritma genetik untuk menyelesaikan puz
    java GeneticAlgorithmYinYang
    ```
 
-4. Hasil solusi akan disimpan dalam file output (puzzle_solution.txt).
+4. Hasil solusi akan disimpan dalam file output (`puzzle_solution.txt`).
