@@ -110,34 +110,6 @@ public class Chromosome {
     }
 
     /**
-     * Memeriksa apakah sel pada posisi (i, j) dikelilingi oleh warna yang berbeda
-     * @param i Baris sel
-     * @param j Kolom sel
-     * @param color Warna sel yang ingin diperiksa (1 untuk W, 2 untuk B)
-     * @param puzzle Puzzle yang sedang diproses
-     * @return True jika sel dikelilingi oleh warna yang berbeda, false jika tidak
-     */
-    // private boolean isSurroundedBy(int i, int j, int color, YinYangPuzzle puzzle) {
-    //     // Posisi tetangga atas, bawah, kiri, kanan
-    //     int[] di = {-1, 1, 0, 0};
-    //     int[] dj = {0, 0, -1, 1};
-
-    //     for (int k = 0; k < 4; k++) {
-    //         int ni = i + di[k];
-    //         int nj = j + dj[k];
-    //         if (ni >= 0 && nj >= 0 && ni < puzzle.getSize() && nj < puzzle.getSize()) {
-    //             // Periksa apakah ada tetangga yang memiliki warna berbeda
-    //             if (color == 1 && puzzle.getGrid()[ni][nj] == 2) {
-    //                 return true; // W dikelilingi B
-    //             } else if (color == 2 && puzzle.getGrid()[ni][nj] == 1) {
-    //                 return true; // B dikelilingi W
-    //             }
-    //         }
-    //     }
-    //     return false; // Tidak dikelilingi warna yang berbeda
-    // }
-
-    /**
      * Mengembalikan nilai fitness dari kromosom ini
      * @return Fitness dari kromosom ini
      */

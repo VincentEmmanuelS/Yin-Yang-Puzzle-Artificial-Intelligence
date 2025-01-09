@@ -10,6 +10,9 @@ import java.util.*;
  */
 public class YinYangSolver {
     public static void main(String[] args) throws IOException {
+
+        long startTime = System.currentTimeMillis();    // Timer untuk keperluan testing
+
         // Membaca puzzle dari file
         String inputFilePath = "puzzle_input.txt";
         YinYangPuzzle puzzle = YinYangPuzzle.loadFromFile(inputFilePath);
@@ -19,6 +22,10 @@ public class YinYangSolver {
 
         // Menyelesaikan puzzle dan mendapatkan hasil
         GeneticResult result = solver.solve();
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;        // Durasi dalam milidetik
+        System.out.println(duration);
 
         String outputFile = "puzzle_solution.txt";  // Nama file output untuk solusi
         saveResultToFile(outputFile, result);

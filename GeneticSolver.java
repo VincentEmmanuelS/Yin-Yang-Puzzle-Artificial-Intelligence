@@ -83,22 +83,92 @@ public class GeneticSolver {
     }
 
     /**
-     * Memilih orang tua dari populasi menggunakan seleksi turnamen
+     * Memilih orang tua dari populasi
     * @param population Populasi yang ada
     * @return Orang tua yang dipilih
     */
     private Chromosome selectParent(List<Chromosome> population) {
-        Chromosome best = null;
+        return tournamentSelection(population);
+        // return rouletteWheelSelection(population);
+        // return rankSelection(population);
+    }
 
-        // Melakukan seleksi turnamen dengan 5 kandidat acak
-        for (int i = 0; i < 5; i++) {
+    /**
+     * Memilih orang tua dari populasi menggunakan metode seleksi turnamen.
+     * @param population Daftar individu dalam populasi.
+     * @return Individu terbaik dari turnamen.
+     */
+    private Chromosome tournamentSelection(List<Chromosome> population) {
+        Chromosome best = null; // Menyimpan individu terbaik dari turnamen
+        int tournamentSize = 5; // Ukuran turnamen (jumlah kandidat yang dipilih)
+
+        // Melakukan seleksi untuk ukuran turnamen yang ditentukan
+        for (int i = 0; i < tournamentSize; i++) {
+            // Memilih kandidat acak dari populasi
             Chromosome candidate = population.get(GlobalVariable.RANDOM.nextInt(population.size()));
             // Memilih kandidat dengan fitness terbaik
             if (best == null || candidate.getFitness() < best.getFitness()) {
-                best = candidate;
+                best = candidate; // Update individu terbaik
             }
         }
-        return best; // Mengembalikan orang tua dengan fitness terbaik
+        return best; // Mengembalikan individu terbaik dari turnamen
+    }
+
+    /**
+     * Memilih orang tua dari populasi menggunakan metode seleksi roda roulette.
+     * @param population Daftar individu dalam populasi.
+     * @return Individu yang dipilih berdasarkan probabilitas fitness.
+     */
+    private Chromosome rouletteWheelSelection(List<Chromosome> population) {
+        double totalFitness = 0; // Menyimpan total fitness dari populasi
+        // Menghitung total fitness
+        for (Chromosome chromosome : population) {
+            totalFitness += chromosome.getFitness();
+        }
+
+        // Menghasilkan nilai acak antara 0 dan total fitness
+        double randomValue = GlobalVariable.RANDOM.nextDouble() * totalFitness;
+        double cumulativeFitness = 0; // Menyimpan fitness kumulatif
+
+        // Memilih individu berdasarkan probabilitas
+        for (Chromosome chromosome : population) {
+            cumulativeFitness += chromosome.getFitness(); // Menambahkan fitness individu ke kumulatif
+            // Jika kumulatif fitness melebihi nilai acak, pilih individu ini
+            if (cumulativeFitness >= randomValue) {
+                return chromosome; // Mengembalikan individu yang dipilih
+            }
+        }
+        return population.get(0); // Kembalikan individu pertama jika tidak ada yang terpilih
+    }
+
+    /**
+     * Memilih orang tua dari populasi menggunakan metode seleksi peringkat.
+     * @param population Daftar individu dalam populasi.
+     * @return Individu yang dipilih berdasarkan peringkat fitness.
+     */
+    private Chromosome rankSelection(List<Chromosome> population) {
+        // Mengurutkan populasi berdasarkan fitness (fitness lebih rendah lebih baik)
+        population.sort(Comparator.comparingInt(Chromosome::getFitness));
+
+        // Menghitung total peringkat
+        double totalRank = 0;
+        for (int i = 0; i < population.size(); i++) {
+            totalRank += (i + 1); // Peringkat dimulai dari 1
+        }
+
+        // Menghasilkan nilai acak antara 0 dan total peringkat
+        double randomValue = GlobalVariable.RANDOM.nextDouble() * totalRank;
+        double cumulativeRank = 0; // Menyimpan peringkat kumulatif
+
+        // Memilih individu berdasarkan peringkat
+        for (int i = 0; i < population.size(); i++) {
+            cumulativeRank += (i + 1); // Menambahkan peringkat individu ke kumulatif
+            // Jika kumulatif peringkat melebihi nilai acak, pilih individu ini
+            if (cumulativeRank >= randomValue) {
+                return population.get(i); // Mengembalikan individu yang dipilih
+            }
+        }
+        return population.get(0); // Kembalikan individu pertama jika tidak ada yang terpilih
     }
 
     /**
