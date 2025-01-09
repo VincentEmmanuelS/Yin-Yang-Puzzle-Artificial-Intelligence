@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class YinYangPuzzle {
     private final int[][] grid; // Matriks yang mewakili grid puzzle
-    private final int size; // Ukuran grid (panjang sisi)
+    private final int size;     // Ukuran grid (panjang sisi)
 
     /**
      * Konstruktor untuk membuat objek puzzle dengan grid yang diberikan
@@ -57,11 +57,11 @@ public class YinYangPuzzle {
                         .map(s -> {
                             switch (s) {
                                 case ".":
-                                    return 0; // Sel kosong
+                                    return 0;  // Sel kosong
                                 case "W":
-                                    return 1; // Bidak putih
+                                    return 1;  // Bidak putih
                                 case "B":
-                                    return 2; // Bidak hitam
+                                    return 2;  // Bidak hitam
                                 default:
                                     return -1; // Masukan tidak valid
                             }
