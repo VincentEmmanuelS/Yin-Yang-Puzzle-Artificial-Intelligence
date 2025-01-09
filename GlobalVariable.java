@@ -7,6 +7,7 @@ import java.util.Random;
 public class GlobalVariable {
     // Seed untuk keperluan reproduksibilitas (agar hasilnya konsisten)
     public static final long SEED = new Random().nextLong(1000); // Ganti dengan nilai seed yang diinginkan
+    // public static final long SEED = 151;    // SEED var untuk checker, debug dan testing
 
     // Penghasil angka acak dengan seed tetap
     public static final Random RANDOM = new Random(SEED);
