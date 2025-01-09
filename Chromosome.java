@@ -6,7 +6,7 @@ import java.util.Random;
 
 /**
  * Kromosom yang mewakili solusi potensial dalam algoritma genetika
-*/
+ */
 public class Chromosome {
     private final int[][] grid; // Matriks grid puzzle yang mewakili kromosom
     private final int fitness; // Nilai fitness untuk kromosom ini

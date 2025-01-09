@@ -4,9 +4,9 @@
 
 import java.util.*;
 
- /**
-  * Solver algoritma genetika untuk puzzle Yin-Yang
-  */
+/**
+ * Solver algoritma genetika untuk puzzle Yin-Yang
+*/
 public class GeneticSolver {
     private final YinYangPuzzle puzzle; // Menyimpan puzzle Yin-Yang yang akan diselesaikan
 
