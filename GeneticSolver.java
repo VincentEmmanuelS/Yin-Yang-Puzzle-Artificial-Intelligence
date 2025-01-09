@@ -31,8 +31,8 @@ public class GeneticSolver {
             population = evolve(population); // Evolusi populasi
             Chromosome best = getBestChromosome(population); // Ambil kromosom terbaik dari populasi
 
-            // Jika fitness terbaik adalah 0, solusi telah ditemukan
-            if (best.getFitness() == 0) {
+            // Jika fitness terbaik adalah 100, solusi telah ditemukan
+            if (best.getFitness() == 100) {
                 return new GeneticResult(best, generation); // Mengembalikan hasil dengan solusi yang ditemukan
             }
 
