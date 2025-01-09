@@ -32,14 +32,6 @@ public class GeneticResult {
      * @return Jumlah generasi
      */
     public int getGenerations() {
-        return generations; // Mengembalikan jumlah generasi yang digunakan
-    }
-
-    /**
-     * Mengambil nilai fitness dari solusi terbaik
-     * @return Nilai fitness dari solusi terbaik
-     */
-    public int getFitness() {
-        return solution.getFitness(); // Mengambil nilai fitness dari kromosom solusi terbaik
+        return generations; // Mengembalikan jumlah generasi
     }
 }
