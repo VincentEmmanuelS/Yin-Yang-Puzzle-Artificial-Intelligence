@@ -6,8 +6,8 @@
  * Container untuk hasil dari algoritma genetika
  */
 public class GeneticResult {
-    private final Chromosome solution; // Solusi terbaik yang ditemukan oleh algoritma genetika
-    private final int generations; // Jumlah generasi yang dibutuhkan untuk menemukan solusi
+    private final Chromosome solution;  // Solusi terbaik yang ditemukan oleh algoritma genetika
+    private final int generations;      // Jumlah generasi yang dibutuhkan untuk menemukan solusi
 
     /**
      * Konstruktor untuk menginisialisasi hasil dari algoritma genetika
@@ -24,7 +24,7 @@ public class GeneticResult {
      * @return Solusi terbaik dalam bentuk kromosom
      */
     public Chromosome getSolution() {
-        return solution; // Mengembalikan solusi terbaik
+        return solution;    // Mengembalikan solusi terbaik
     }
 
     /**

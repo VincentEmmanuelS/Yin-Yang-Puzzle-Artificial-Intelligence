@@ -41,10 +41,10 @@ public class YinYangSolver {
         // Menulis solusi dan laporan ke dalam file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             writer.write("Solusi:\n");
-            writer.write(result.getSolution().toString()); // Menampilkan grid dalam format yang diperlukan
+            writer.write(result.getSolution().toString());                              // Menampilkan grid dalam format yang diperlukan
             writer.write("\n\nLaporan:\n");
-            writer.write("Seed: " + GlobalVariable.SEED + "\n"); // Menyertakan seed yang digunakan dalam laporan
-            writer.write("Generasi: " + result.getGenerations() + "\n"); // Menyertakan jumlah generasi
+            writer.write("Seed: " + GlobalVariable.SEED + "\n");                        // Menyertakan seed yang digunakan dalam laporan
+            writer.write("Generasi: " + result.getGenerations() + "\n");                // Menyertakan jumlah generasi
             writer.write("Fitness Akhir: " + result.getSolution().getFitness() + "\n"); // Menyertakan nilai fitness akhir
         }
     }

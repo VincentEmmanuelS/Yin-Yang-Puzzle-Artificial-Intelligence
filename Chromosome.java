@@ -8,8 +8,8 @@ import java.util.Random;
  * Kromosom yang mewakili solusi potensial dalam algoritma genetika
  */
 public class Chromosome {
-    private final int[][] grid; // Matriks grid puzzle yang mewakili kromosom
-    private final int fitness; // Nilai fitness untuk kromosom ini
+    private final int[][] grid;     // Matriks grid puzzle yang mewakili kromosom
+    private final int fitness;      // Nilai fitness untuk kromosom ini
 
     /**
      * Konstruktor untuk membuat kromosom baru dengan ukuran puzzle tertentu
@@ -22,14 +22,15 @@ public class Chromosome {
     Random rand = GlobalVariable.RANDOM;
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (puzzle.getGrid()[i][j] == 0) { // Jika sel kosong (.), isi dengan acak W atau B
-                grid[i][j] = rand.nextInt(2) + 1; // 1 untuk W, 2 untuk B
-            } else {
-                grid[i][j] = puzzle.getGrid()[i][j]; // Mempertahankan nilai W (1) atau B (2)
+            if (puzzle.getGrid()[i][j] == 0) {              // Jika sel kosong (.), isi dengan acak W atau B
+                grid[i][j] = rand.nextInt(2) + 1;     // 1 untuk W, 2 untuk B
+            } 
+            else {
+                grid[i][j] = puzzle.getGrid()[i][j];        // Mempertahankan nilai W (1) atau B (2)
             }
         }
     }
-        this.fitness = calculateFitness(puzzle); // Hitung fitness dari kromosom ini
+        this.fitness = calculateFitness(puzzle);            // Hitung fitness dari kromosom ini
     }
 
     /**
@@ -133,9 +134,10 @@ public class Chromosome {
         // Menyalin bagian dari orang tua pertama
         for (int i = 0; i < crossoverPoint; i++) {
             for (int j = 0; j < size; j++) {
-                if (this.grid[i][j] == 0) { // Hanya salin jika sel kosong
+                if (this.grid[i][j] == 0) {         // Hanya salin jika sel kosong
                     newGrid[i][j] = this.grid[i][j];
-                } else {
+                } 
+                else {
                     newGrid[i][j] = other.grid[i][j];
                 }
             }
@@ -144,9 +146,10 @@ public class Chromosome {
         // Menyalin bagian dari orang tua kedua
         for (int i = crossoverPoint; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (this.grid[i][j] == 0) { // Hanya salin jika sel kosong
+                if (this.grid[i][j] == 0) {         // Hanya salin jika sel kosong
                     newGrid[i][j] = this.grid[i][j];
-                } else {
+                } 
+                else {
                     newGrid[i][j] = other.grid[i][j];
                 }
             }

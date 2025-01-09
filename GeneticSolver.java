@@ -6,22 +6,22 @@ import java.util.*;
 
 /**
  * Solver algoritma genetika untuk puzzle Yin-Yang
-*/
+ */
 public class GeneticSolver {
     private final YinYangPuzzle puzzle; // Menyimpan puzzle Yin-Yang yang akan diselesaikan
 
     /**
      * Konstruktor untuk menginisialisasi solver dengan puzzle Yin-Yang
-    * @param puzzle Puzzle Yin-Yang yang akan diselesaikan
-    */
+     * @param puzzle Puzzle Yin-Yang yang akan diselesaikan
+     */
     public GeneticSolver(YinYangPuzzle puzzle) {
         this.puzzle = puzzle;
     }
 
     /**
      * Metode untuk menyelesaikan puzzle menggunakan algoritma genetika
-    * @return Hasil dari algoritma genetika, berupa solusi dan jumlah generasi
-    */
+     * @return Hasil dari algoritma genetika, berupa solusi dan jumlah generasi
+     */
     public GeneticResult solve() {
         List<Chromosome> population = initializePopulation(); // Inisialisasi populasi awal
         int generation = 0;
@@ -45,8 +45,8 @@ public class GeneticSolver {
 
     /**
      * Inisialisasi populasi pertama untuk algoritma genetika
-    * @return Daftar kromosom yang mewakili populasi awal
-    */
+     * @return Daftar kromosom yang mewakili populasi awal
+     */
     private List<Chromosome> initializePopulation() {
         List<Chromosome> population = new ArrayList<>();
 
@@ -59,9 +59,9 @@ public class GeneticSolver {
 
     /**
      * Proses evolusi untuk mengubah populasi menjadi generasi berikutnya
-    * @param population Populasi saat ini
-    * @return Populasi baru setelah evolusi
-    */
+     * @param population Populasi saat ini
+     * @return Populasi baru setelah evolusi
+     */
     private List<Chromosome> evolve(List<Chromosome> population) {
         List<Chromosome> newPopulation = new ArrayList<>();
 
@@ -84,9 +84,9 @@ public class GeneticSolver {
 
     /**
      * Memilih orang tua dari populasi
-    * @param population Populasi yang ada
-    * @return Orang tua yang dipilih
-    */
+     * @param population Populasi yang ada
+     * @return Orang tua yang dipilih
+     */
     private Chromosome selectParent(List<Chromosome> population) {
         return tournamentSelection(population);
         // return rouletteWheelSelection(population);
@@ -173,9 +173,9 @@ public class GeneticSolver {
 
     /**
      * Mengambil kromosom terbaik dalam populasi berdasarkan nilai fitness
-    * @param population Populasi yang ada
-    * @return Kromosom dengan fitness terbaik (terendah)
-    */
+     * @param population Populasi yang ada
+     * @return Kromosom dengan fitness terbaik (terendah)
+     */
     private Chromosome getBestChromosome(List<Chromosome> population) {
         return population.stream().min(Comparator.comparingInt(Chromosome::getFitness)).orElseThrow();
     }

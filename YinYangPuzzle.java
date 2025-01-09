@@ -2,20 +2,20 @@
  * @author Vincent Emmanuel Suwardy / 6182201067
  */
 
- import java.io.*;
- import java.util.*;
+import java.io.*;
+import java.util.*;
  
 /**
  * Representasi dari Puzzle Yin-Yang
-*/
+ */
 public class YinYangPuzzle {
     private final int[][] grid; // Matriks yang mewakili grid puzzle
     private final int size; // Ukuran grid (panjang sisi)
 
     /**
      * Konstruktor untuk membuat objek puzzle dengan grid yang diberikan
-    * @param grid Matriks dua dimensi yang mewakili grid puzzle
-    */
+     * @param grid Matriks dua dimensi yang mewakili grid puzzle
+     */
     public YinYangPuzzle(int[][] grid) {
         this.grid = grid;
         this.size = grid.length; // Ukuran grid berdasarkan jumlah baris
@@ -23,26 +23,26 @@ public class YinYangPuzzle {
 
     /**
      * Mengambil ukuran dari grid (jumlah baris/kolom)
-    * @return Ukuran grid (jumlah baris/kolom)
-    */
+     * @return Ukuran grid (jumlah baris/kolom)
+     */
     public int getSize() {
         return size;
     }
 
     /**
      * Mengambil grid puzzle
-    * @return Matriks dua dimensi yang mewakili grid puzzle
-    */
+     * @return Matriks dua dimensi yang mewakili grid puzzle
+     */
     public int[][] getGrid() {
         return grid;
     }
 
     /**
      * Memuat puzzle dari file
-    * @param filePath Path ke file yang berisi grid puzzle
-    * @return Objek YinYangPuzzle yang mewakili puzzle yang dimuat
-    * @throws IOException Jika terjadi kesalahan saat membaca file
-    */
+     * @param filePath Path ke file yang berisi grid puzzle
+     * @return Objek YinYangPuzzle yang mewakili puzzle yang dimuat
+     * @throws IOException Jika terjadi kesalahan saat membaca file
+     */
     public static YinYangPuzzle loadFromFile(String filePath) throws IOException {
         // Membaca file dan memuat grid puzzle
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -78,8 +78,8 @@ public class YinYangPuzzle {
 
     /**
      * Mengubah grid puzzle menjadi string untuk ditampilkan
-    * @return String yang mewakili grid puzzle dalam format yang dapat dibaca
-    */
+     * @return String yang mewakili grid puzzle dalam format yang dapat dibaca
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
