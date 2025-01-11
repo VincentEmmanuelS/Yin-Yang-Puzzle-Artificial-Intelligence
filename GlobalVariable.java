@@ -13,8 +13,8 @@ public class GlobalVariable {
     public static final Random RANDOM = new Random(SEED);
 
     // Parameter untuk algoritma genetik
-    public static final int POPULATION_SIZE = 100;      // Ukuran populasi
-    public static final int MAX_GENERATIONS = 1000;     // Maksimal jumlah generasi
+    public static final int POPULATION_SIZE = 1000;      // Ukuran populasi
+    public static final int MAX_GENERATIONS = 10000;     // Maksimal jumlah generasi
     public static final double MUTATION_RATE = 0.1;     // Tingkat mutasi
     public static final double CROSSOVER_RATE = 0.7;    // Tingkat crossover (pertukaran gen antar individu)
 }

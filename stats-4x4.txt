@@ -1,0 +1,140 @@
+. . W .
+. B . .
+. . W .
+B . . .
+
+
+5.2 Eksperimen 4x4, varian ukuran populasi [50, 100, 200, 500], final score resulted after 10 tries
+POPULATION_SIZE         :   50
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   58.4
+Duration (ms)           :   97
+
+POPULATION_SIZE         :   100
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   58.7
+Duration (ms)           :   137
+
+POPULATION_SIZE         :   200
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   57.8
+Duration (ms)           :   229
+
+POPULATION_SIZE         :   500
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   55.4
+Duration (ms)           :   708
+
+
+==================================================================================================
+
+5.3 Eksperimen 4x4, varian kemungkinan crossover [0.1, 0.5, 0.7, 0.9], final score resulted after 10 tries
+POPULATION_SIZE         :   10
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.1
+Fitness                 :   58.6
+Duration (ms)           :   131
+
+POPULATION_SIZE         :   10
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.5
+Fitness                 :   58.2
+Duration (ms)           :   133
+
+POPULATION_SIZE         :   10
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   58.5
+Duration (ms)           :   136
+
+POPULATION_SIZE         :   10
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.9
+Fitness                 :   58.6
+Duration (ms)           :   132
+
+==================================================================================================
+
+5.4 Eksperimen 4x4, varian kemungkinan mutasi [0.01, 0.05, 0.1, 0.2], final score resulted after 10 tries
+
+POPULATION_SIZE         :   100
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.01
+CROSSOVER_RATE          :   0.7
+Fitness                 :   56.5
+Duration (ms)           :   140
+
+POPULATION_SIZE         :   100
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.05
+CROSSOVER_RATE          :   0.7
+Fitness                 :   56.6
+Duration (ms)           :   143
+
+POPULATION_SIZE         :   10
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.1
+CROSSOVER_RATE          :   0.7
+Fitness                 :   58.2
+Duration (ms)           :   133
+
+POPULATION_SIZE         :   100
+MAX_GENERATIONS         :   1000
+MUTATION_RATE           :   0.2
+CROSSOVER_RATE          :   0.7
+Fitness                 :   57.6
+Duration (ms)           :   129 
+
+==================================================================================================
+
+5.5 Eksperimen 4x4, varian metode seleksi orangtua [Tournament, Roulette Wheel, Ranking], final score resulted after 10 tries
+
+I. Tournament
+POPULATION_SIZE         :   1000
+MAX_GENERATIONS         :   10000
+MUTATION_RATE           :   0.2
+CROSSOVER_RATE          :   0.7
+Fitness                 :   53
+Duration (ms)           :   8984
+
+II. Roulette Wheel
+POPULATION_SIZE         :   1000
+MAX_GENERATIONS         :   10000
+MUTATION_RATE           :   0.2
+CROSSOVER_RATE          :   0.7
+Fitness                 :   -
+Duration (ms)           :   -
+
+III. Rank Selection
+POPULATION_SIZE         :   1000
+MAX_GENERATIONS         :   10000
+MUTATION_RATE           :   0.2
+CROSSOVER_RATE          :   0.7
+Fitness                 :   -
+Duration (ms)           :   -
+
+
+
+
+
+
+iseng nyoba :/
+
+POPULATION_SIZE         :   1000
+MAX_GENERATIONS         :   1000000
+MUTATION_RATE           :   0.2
+CROSSOVER_RATE          :   0.9
+Fitness                 :   53 (wtf?)
+Duration (ms)           :   813712
