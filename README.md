@@ -2,7 +2,9 @@
 
 ### Topik: Local Search menggunakan Algoritma Genetik
 
-**Dibuat oleh:** Vincent Emmanuel Suwardy / 6182201067
+**Dibuat oleh:** 
+- Vincent Emmanuel Suwardy / 6182201067
+- Andrew Sebastian Aruan / 6182201004
 
 Proyek ini merupakan implementasi dari algoritma genetik untuk menyelesaikan puzzle Yin-Yang, sebuah jenis puzzle logika yang menantang. Dalam puzzle ini, tujuan utamanya adalah untuk mengisi grid dengan dua jenis simbol (hitam dan putih) dengan mematuhi beberapa aturan tertentu, seperti keseimbangan jumlah simbol di setiap baris dan kolom serta larangan untuk memiliki dua simbol yang sama bersebelahan.
 

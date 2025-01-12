@@ -1,7 +1,7 @@
 /**
  * @author Vincent Emmanuel Suwardy / 6182201067
+ * @author Andrew Sebastian Aruan / 6182201004
  */
-
 import java.util.*;
 
 /**
