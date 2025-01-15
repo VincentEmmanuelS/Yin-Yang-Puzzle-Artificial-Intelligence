@@ -1,7 +1,7 @@
 /**
  * @author Vincent Emmanuel Suwardy / 6182201067
  * @author Andrew Sebastian Aruan / 6182201004
- */
+ */ 
 import java.util.*;
 
 /**
@@ -52,7 +52,8 @@ public class GeneticSolver {
 
         // Membuat kromosom baru untuk populasi
         while (population.size() < GlobalVariable.POPULATION_SIZE) {
-            population.add(new Chromosome(puzzle.getSize(), puzzle)); // Membuat kromosom dengan ukuran puzzle dan puzzle itu sendiri
+            // Membuat kromosom dengan ukuran puzzle dan puzzle itu sendiri
+            population.add(new Chromosome(puzzle.getSize(), puzzle));
         }
         return population;
     }
@@ -153,19 +154,18 @@ public class GeneticSolver {
         // Menghitung total peringkat
         double totalRank = 0;
         for (int i = 0; i < population.size(); i++) {
-            totalRank += (i + 1); // Peringkat dimulai dari 1
+            totalRank += (i + 1);                   // Peringkat dimulai dari 1
         }
 
         // Menghasilkan nilai acak antara 0 dan total peringkat
         double randomValue = GlobalVariable.RANDOM.nextDouble() * totalRank;
-        double cumulativeRank = 0; // Menyimpan peringkat kumulatif
+        double cumulativeRank = 0;                  // Menyimpan peringkat kumulatif
 
         // Memilih individu berdasarkan peringkat
         for (int i = 0; i < population.size(); i++) {
-            cumulativeRank += (i + 1); // Menambahkan peringkat individu ke kumulatif
-            // Jika kumulatif peringkat melebihi nilai acak, pilih individu ini
-            if (cumulativeRank >= randomValue) {
-                return population.get(i); // Mengembalikan individu yang dipilih
+            cumulativeRank += (i + 1);              // Menambahkan peringkat individu ke kumulatif
+            if (cumulativeRank >= randomValue) {    // Jika kumulatif peringkat melebihi nilai acak, pilih individu ini
+                return population.get(i);           // Mengembalikan individu yang dipilih
             }
         }
         return population.get(0); // Kembalikan individu pertama jika tidak ada yang terpilih

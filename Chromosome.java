@@ -18,19 +18,19 @@ public class Chromosome {
      * @param puzzle Puzzle Yin-Yang yang akan diselesaikan
      */
     public Chromosome(int size, YinYangPuzzle puzzle) {
-    grid = new int[size][size];
-    // Inisialisasi grid dengan bidak acak (W atau B) hanya pada posisi yang kosong (.)
-    Random rand = GlobalVariable.RANDOM;
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if (puzzle.getGrid()[i][j] == 0) {              // Jika sel kosong (.), isi dengan acak W atau B
-                grid[i][j] = rand.nextInt(2) + 1;     // 1 untuk W, 2 untuk B
-            } 
-            else {
-                grid[i][j] = puzzle.getGrid()[i][j];        // Mempertahankan nilai W (1) atau B (2)
+        grid = new int[size][size];
+        // Inisialisasi grid dengan bidak acak (W atau B) hanya pada posisi yang kosong (.)
+        Random rand = GlobalVariable.RANDOM;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (puzzle.getGrid()[i][j] == 0) {              // Jika sel kosong (.), isi dengan acak W atau B
+                    grid[i][j] = rand.nextInt(2) + 1;     // 1 untuk W, 2 untuk B
+                } 
+                else {
+                    grid[i][j] = puzzle.getGrid()[i][j];        // Mempertahankan nilai W (1) atau B (2)
+                }
             }
         }
-    }
         this.fitness = calculateFitness(puzzle);            // Hitung fitness dari kromosom ini
     }
 
@@ -124,14 +124,58 @@ public class Chromosome {
      * @param other Kromosom orang tua kedua
      * @return Kromosom keturunan
      */
-    public Chromosome crossover(Chromosome other) {
-        int size = grid.length;
-        Random rand = GlobalVariable.RANDOM;
-        int crossoverPoint = rand.nextInt(size);
+    // public Chromosome crossover(Chromosome other) {
+    //     int size = grid.length;
+    //     Random rand = GlobalVariable.RANDOM;
+    //     int crossoverPoint = rand.nextInt(size);
     
+    //     // Membuat grid untuk kromosom keturunan
+    //     int[][] newGrid = new int[size][size];
+    
+    //     // Menyalin bagian dari orang tua pertama
+    //     for (int i = 0; i < crossoverPoint; i++) {
+    //         for (int j = 0; j < size; j++) {
+    //             if (this.grid[i][j] == 0) {         // Hanya salin jika sel kosong
+    //                 newGrid[i][j] = this.grid[i][j];
+    //             } 
+    //             else {
+    //                 newGrid[i][j] = other.grid[i][j];
+    //             }
+    //         }
+    //     }
+    
+    //     // Menyalin bagian dari orang tua kedua
+    //     for (int i = crossoverPoint; i < size; i++) {
+    //         for (int j = 0; j < size; j++) {
+    //             if (this.grid[i][j] == 0) {         // Hanya salin jika sel kosong
+    //                 newGrid[i][j] = this.grid[i][j];
+    //             } 
+    //             else {
+    //                 newGrid[i][j] = other.grid[i][j];
+    //             }
+    //         }
+    //     }
+
+    /**
+     * Melakukan crossover antara dua kromosom untuk menghasilkan keturunan
+     * @param other Kromosom orang tua kedua
+     * @return Kromosom keturunan
+     */
+    public Chromosome crossover(Chromosome other) {
+        Random rand = GlobalVariable.RANDOM;
+
+        // Memeriksa apakah crossover harus dilakukan berdasarkan CROSSOVER_RATE
+        if (rand.nextDouble() >= GlobalVariable.CROSSOVER_RATE) {
+            // Jika tidak melakukan crossover, salin salah satu orang tua secara langsung
+            return new Chromosome(this.grid.length, new YinYangPuzzle(this.grid));
+        }
+
+        int size = grid.length;
+        int crossoverPoint = rand.nextInt(size);
+
         // Membuat grid untuk kromosom keturunan
         int[][] newGrid = new int[size][size];
-    
+
         // Menyalin bagian dari orang tua pertama
         for (int i = 0; i < crossoverPoint; i++) {
             for (int j = 0; j < size; j++) {
@@ -143,7 +187,7 @@ public class Chromosome {
                 }
             }
         }
-    
+
         // Menyalin bagian dari orang tua kedua
         for (int i = crossoverPoint; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -155,25 +199,28 @@ public class Chromosome {
                 }
             }
         }
-    
+
         return new Chromosome(size, new YinYangPuzzle(newGrid));
     }
-    
 
     /**
      * Melakukan mutasi pada kromosom ini
      */
     public void mutate() {
         Random rand = GlobalVariable.RANDOM;
-        int i = rand.nextInt(grid.length);
-        int j = rand.nextInt(grid.length);
-    
-        // Hanya lakukan mutasi pada sel kosong
-        if (grid[i][j] == 0) {
-            grid[i][j] = rand.nextInt(2) + 1; // 1 untuk W, 2 untuk B
+
+        if (rand.nextDouble() < GlobalVariable.MUTATION_RATE) {
+            int i = rand.nextInt(grid.length);
+            int j = rand.nextInt(grid.length);
+
+            // Hanya lakukan mutasi pada sel kosong
+            if (grid[i][j] == 0) {
+                grid[i][j] = rand.nextInt(2) + 1; // 1 untuk W, 2 untuk B
+            }
         }
     }
 
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
